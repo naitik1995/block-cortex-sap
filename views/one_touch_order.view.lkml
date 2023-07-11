@@ -37,20 +37,27 @@ view: one_touch_order {
 
   dimension: vbapclient_mandt {
     type: string
-    primary_key: yes
+    primary_key: no
     sql: ${TABLE}.VBAPClient_MANDT ;;
   }
 
   dimension: vbapsales_document_item_posnr {
     type: string
-    primary_key: yes
+    primary_key: no
     sql: ${TABLE}.VBAPSalesDocument_Item_POSNR ;;
   }
 
   dimension: vbapsales_document_vbeln {
     type: string
-    primary_key: yes
+    primary_key: no
     sql: ${TABLE}.VBAPSalesDocument_VBELN ;;
+  }
+
+  dimension: primary_key {
+    label: "Compound Key"
+    view_label: "One Touch Order Primary Key"
+    primary_key: yes
+    sql: CONCAT(${vbapclient_mandt}, ${vbapsales_document_item_posnr}, ${vbapsales_document_vbeln}) ;;
   }
 
   dimension: vbaptotal_order_kwmeng {

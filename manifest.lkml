@@ -1,19 +1,19 @@
 constant: CONNECTION_NAME {
-  value: "cortex"
+  value: "cortex-o2c"
   export: override_required
 }
 
 constant: GCP_PROJECT {
-  value: "GCP Project Name"
+  value: "naitik-poc-test"
   export: override_required
 }
 
 constant: REPORTING_DATASET {
-  value: "Reporting Dataset Name"
+  value: "REPORTING_02C"
   export: override_required
 }
 
 constant: CLIENT {
-  value: "Client ID"
+  value: "100"
   export: override_required
 }

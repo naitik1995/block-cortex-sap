@@ -14,7 +14,7 @@ view: vendor_performance {
 
   dimension: client_mandt {
     type: string
-    primary_key: yes
+    primary_key: no
     sql: ${TABLE}.Client_MANDT ;;
     hidden: no
   }
@@ -32,7 +32,7 @@ view: vendor_performance {
   dimension: month_year{
     type: string
     hidden: no
-    primary_key: yes
+    primary_key: no
     sql: concat(${fiscal_year},"/",${fiscal_period}) ;;
   }
 
@@ -185,13 +185,13 @@ view: vendor_performance {
     suggest_persist_for: "10 minutes"
     hidden: no
   }
-  
+
   dimension: target_currency_tcurr {
     type: string
     sql: ${TABLE}.TargetCurrency_TCURR ;;
     hidden: no
   }
-  
+
   dimension: currency_key_waers2 {
     type: string
     sql: ${TABLE}.CurrencyKey_WAERS ;;
@@ -216,7 +216,7 @@ view: vendor_performance {
 
   dimension: document_number_ebeln {
     type: string
-    primary_key: yes
+    primary_key: no
     sql: ${TABLE}.DocumentNumber_EBELN ;;
     suggest_persist_for: "10 minutes"
     hidden: no
@@ -256,7 +256,7 @@ view: vendor_performance {
 
   dimension: material_number {
     type: string
-    primary_key: yes
+    primary_key: no
     sql: ${TABLE}.MaterialNumber_MATNR ;;
   }
 
@@ -375,7 +375,7 @@ view: vendor_performance {
     value_format_name: Greek_Number_Format
     link: {
       label: "Spend by Top Vendors"
-      url: "/dashboards/cortex_sap_operational::sap_finance_sa_08_a_spend_by_top_vendors?Company+Code={{ _filters['vendor_performance.company_text_butxt']| url_encode }}&Purchasing+Organization={{ _filters['vendor_performance.purchasing_organization_text_ekotx']| url_encode }}&Purchasing+Group={{ _filters['vendor_performance.purchasing_group_text_eknam']| url_encode }}&Vendor+Name={{ _filters['vendor_performance.name1']| url_encode }}&Vendor+Country={{ _filters['vendor_performance.country_key_land1']| url_encode }}&Target+Currency={{ _filters['vendor_performance.target_currency_tcurr']| url_encode }}&Invoice+Date={{ _filters['vendor_performance.Invoice_date_date']| url_encode }}"
+      url: "/dashboards/cortex_sap_operational_o2c::sap_finance_sa_08_a_spend_by_top_vendors?Company+Code={{ _filters['vendor_performance.company_text_butxt']| url_encode }}&Purchasing+Organization={{ _filters['vendor_performance.purchasing_organization_text_ekotx']| url_encode }}&Purchasing+Group={{ _filters['vendor_performance.purchasing_group_text_eknam']| url_encode }}&Vendor+Name={{ _filters['vendor_performance.name1']| url_encode }}&Vendor+Country={{ _filters['vendor_performance.country_key_land1']| url_encode }}&Target+Currency={{ _filters['vendor_performance.target_currency_tcurr']| url_encode }}&Invoice+Date={{ _filters['vendor_performance.Invoice_date_date']| url_encode }}"
     }
     hidden: no
   }
@@ -388,7 +388,7 @@ view: vendor_performance {
 
   dimension: item_ebelp {
     type: string
-    primary_key: yes
+    primary_key: no
     sql: ${TABLE}.Item_EBELP ;;
     hidden: no
   }
@@ -426,7 +426,7 @@ view: vendor_performance {
     sql: ${name1} ;;
     hidden: no
   }
-  
+
   dimension: net_order_valuein_pocurrency_netwr {
     type: number
     sql: ${TABLE}.NetOrderValueinPOCurrency_NETWR ;;
@@ -840,8 +840,15 @@ view: vendor_performance {
 
   dimension: plant {
     type: string
-    primary_key: yes
+    primary_key: no
     sql: ${TABLE}.Plant_WERKS ;;
+  }
+
+  dimension: primary_key {
+    label: "Compound Key"
+    view_label: "Vendor Performance Primary Key"
+    primary_key: yes
+    sql: CONCAT(${client_mandt}, ${month_year}, ${document_number_ebeln}, ${material_number}, ${item_ebelp}, ${plant}) ;;
   }
 
   #################################   Purchase Price Currency Conversion   #########
@@ -970,7 +977,7 @@ view: vendor_performance {
     value_format: "0.0%"
     link: {
       label: "Delivery Performance Trend"
-      url: "/dashboards/cortex_sap_operational::sap_finance_vp_09_a_delivery_performance_trend?Target+Currency={{ _filters['target_currency_tcurr']| url_encode }}&Purchase+Order+Date={{ _filters['vendor_performance.purchasing_document_date_bedat_date']| url_encode }}&Vendor+Name={{ _filters['vendor_performance.name1']| url_encode }}&Company+Code={{ _filters['vendor_performance.company_text_butxt']| url_encode }}&Purchasing+Organization={{ _filters['vendor_performance.purchasing_organization_text_ekotx']| url_encode }}&Purchasing+Group={{ _filters['vendor_performance.purchasing_group_text_eknam']| url_encode }}&Vendor+Country={{ _filters['vendor_performance.country_key_land1']| url_encode }}"
+      url: "/dashboards/cortex_sap_operational_o2c::sap_finance_vp_09_a_delivery_performance_trend?Target+Currency={{ _filters['target_currency_tcurr']| url_encode }}&Purchase+Order+Date={{ _filters['vendor_performance.purchasing_document_date_bedat_date']| url_encode }}&Vendor+Name={{ _filters['vendor_performance.name1']| url_encode }}&Company+Code={{ _filters['vendor_performance.company_text_butxt']| url_encode }}&Purchasing+Organization={{ _filters['vendor_performance.purchasing_organization_text_ekotx']| url_encode }}&Purchasing+Group={{ _filters['vendor_performance.purchasing_group_text_eknam']| url_encode }}&Vendor+Country={{ _filters['vendor_performance.country_key_land1']| url_encode }}"
    }
   }
 

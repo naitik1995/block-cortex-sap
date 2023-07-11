@@ -43,7 +43,7 @@ view: sales_order_partner_function {
   dimension: client_mandt {
     type: string
     sql: ${TABLE}.Client_MANDT ;;
-    primary_key: yes
+    primary_key: no
   }
 
   dimension: country_land1 {
@@ -64,7 +64,7 @@ view: sales_order_partner_function {
   dimension: customer_kunnr {
     type: string
     sql: ${TABLE}.Customer_KUNNR ;;
-    primary_key: yes
+    primary_key: no
     hidden: no
   }
 
@@ -110,7 +110,7 @@ view: sales_order_partner_function {
   dimension: item_posnr {
     type: string
     sql: ${TABLE}.Item_POSNR ;;
-    primary_key: yes
+    primary_key: no
   }
 
   dimension: level_number_within_hierarchy_histunr {
@@ -151,7 +151,14 @@ view: sales_order_partner_function {
   dimension: sales_document_vbeln {
     type: string
     sql: ${TABLE}.SalesDocument_VBELN ;;
+    primary_key: no
+  }
+
+  dimension: primary_key {
+    label: "Compound Key"
+    view_label: "Sales Order Partner Function Primary Key"
     primary_key: yes
+    sql: CONCAT(${client_mandt}, ${customer_kunnr}, ${item_posnr}, ${sales_document_vbeln}) ;;
   }
 
   dimension: transportation_zone_lzone {

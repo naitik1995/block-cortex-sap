@@ -21,7 +21,7 @@ view: currency_conversion_new {
   dimension: conv_date_1 {
     type: date
     sql: ${conv_date} ;;
-    primary_key: yes
+    primary_key: no
   }
 
   dimension_group: end {
@@ -42,7 +42,7 @@ view: currency_conversion_new {
   dimension: fcurr {
     type: string
     sql: ${TABLE}.FromCurrency_FCURR ;;
-    primary_key: yes
+    primary_key: no
   }
 
   dimension: kurst {
@@ -53,7 +53,7 @@ view: currency_conversion_new {
   dimension: mandt {
     type: string
     sql: ${TABLE}.Client_MANDT ;;
-    primary_key: yes
+    primary_key: no
   }
 
   dimension_group: start {
@@ -74,8 +74,15 @@ view: currency_conversion_new {
   dimension: tcurr {
     type: string
     sql: ${TABLE}.ToCurrency_TCURR ;;
-    primary_key: yes
+    primary_key: no
     hidden: no
+  }
+
+  dimension: primary_key {
+    label: "Compound Key"
+    view_label: "Currency Conversion Primary Key"
+    primary_key: yes
+    sql: CONCAT(${conv_date_1}, ${fcurr}, ${tcurr}, ${mandt}) ;;
   }
 
   dimension: ukurs {

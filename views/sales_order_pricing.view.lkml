@@ -120,7 +120,7 @@ view: sales_order_pricing {
 
   dimension: client_mandt {
     type: string
-    primary_key: yes
+    primary_key: no
     sql: ${TABLE}.Client_MANDT ;;
   }
 
@@ -196,7 +196,7 @@ view: sales_order_pricing {
 
   dimension: condition_item_number_kposn {
     type: string
-    primary_key: yes
+    primary_key: no
     sql: ${TABLE}.ConditionItemNumber_KPOSN ;;
   }
 
@@ -361,8 +361,15 @@ view: sales_order_pricing {
 
   dimension: number_of_the_document_condition_knumv {
     type: string
-    primary_key: yes
+    primary_key: no
     sql: ${TABLE}.NumberOfTheDocumentCondition_KNUMV ;;
+  }
+
+  dimension: primary_key {
+    label: "Compound Key"
+    view_label: "Sales Order Pricing Primary Key"
+    primary_key: yes
+    sql: CONCAT(${client_mandt}, ${condition_item_number_kposn}, ${number_of_the_document_condition_knumv}) ;;
   }
 
   dimension: numerator_for_converting_condition_units_to_base_units_kumza {

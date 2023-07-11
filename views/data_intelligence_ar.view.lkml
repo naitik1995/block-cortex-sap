@@ -432,7 +432,7 @@ view: data_intelligence_ar {
 
     link: {
       label: "Day Sales Outstanding"
-      url: "/dashboards/cortex_sap_operational::day_sales_outstanding?"
+      url: "/dashboards/cortex_sap_operational_o2c::day_sales_outstanding?"
     }
   }
   measure: DSO{

@@ -33,15 +33,22 @@ view: inventory_metrics_overview {
   dimension: client_mandt {
     type: string
     sql: ${TABLE}.Client_MANDT ;;
-    primary_key: yes
+    primary_key: no
   }
 
   dimension: company_code_bukrs {
     type: string
     sql: ${TABLE}.CompanyCode_BUKRS ;;
     label: "Company Code"
-    primary_key: yes
+    primary_key: no
     hidden: no
+  }
+
+  dimension: primary_key {
+    label: "Compound Key"
+    view_label: "Inventory Metrics Primary Key"
+    primary_key: yes
+    sql: CONCAT(${client_mandt}, ${company_code_bukrs}) ;;
   }
 
   dimension: company_text_butxt {
@@ -250,7 +257,7 @@ view: inventory_metrics_overview {
     hidden: no
     link: {
       label: "Stock Value Details"
-      url: "/dashboards/cortex_sap_operational::stock_value_details?Company+Name={{ _filters['inventory_metrics_overview.company_text_butxt']| url_encode }}&Currency={{ _filters['inventory_metrics_overview.target_currency']| url_encode }}&Plant={{ _filters['inventory_metrics_overview.plant_name2_name2']| url_encode }}&Material={{ _filters['inventory_metrics_overview.material_text_maktx']| url_encode }}&Country={{ _filters['inventory_metrics_overview.country_key_land1']| url_encode }}&Stock+Type={{ _filters['inventory_by_plant.stock_characteristic']| url_encode }}&Material+Type={{ _filters['inventory_metrics_overview.material_type']| url_encode }}"
+      url: "/dashboards/cortex_sap_operational_o2c::stock_value_details?Company+Name={{ _filters['inventory_metrics_overview.company_text_butxt']| url_encode }}&Currency={{ _filters['inventory_metrics_overview.target_currency']| url_encode }}&Plant={{ _filters['inventory_metrics_overview.plant_name2_name2']| url_encode }}&Material={{ _filters['inventory_metrics_overview.material_text_maktx']| url_encode }}&Country={{ _filters['inventory_metrics_overview.country_key_land1']| url_encode }}&Stock+Type={{ _filters['inventory_by_plant.stock_characteristic']| url_encode }}&Material+Type={{ _filters['inventory_metrics_overview.material_type']| url_encode }}"
     }
   }
 

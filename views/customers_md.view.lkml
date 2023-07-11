@@ -253,7 +253,7 @@ view: customers_md {
   dimension: client_mandt {
     type: string
     sql: ${TABLE}.Client_MANDT ;;
-    primary_key: yes
+    primary_key: no
     hidden: no
   }
 
@@ -385,8 +385,15 @@ view: customers_md {
   dimension: customer_number_kunnr {
     type: string
     sql: ${TABLE}.CustomerNumber_KUNNR ;;
-    primary_key: yes
+    primary_key: no
     hidden: no
+  }
+
+  dimension: primary_key {
+    label: "Compound Key"
+    view_label: "Customers MD Primary Key"
+    primary_key: yes
+    sql: CONCAT(${customer_number_kunnr}, ${client_mandt}) ;;
   }
 
   dimension: customer_region_regio {
