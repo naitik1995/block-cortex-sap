@@ -1,5 +1,5 @@
 constant: CONNECTION_NAME {
-  value: "cortex-o2c"
+  value: "cortex_naitik_looker"
   export: override_required
 }
 
@@ -9,7 +9,7 @@ constant: GCP_PROJECT {
 }
 
 constant: REPORTING_DATASET {
-  value: "REPORTING_02C"
+  value: "REPORTING_CORTEX_SAP_V5"
   export: override_required
 }
 
