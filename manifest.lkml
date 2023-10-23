@@ -1,5 +1,5 @@
 constant: CONNECTION_NAME {
-  value: "cortex_naitik_looker"
+  value: "cortex-looker-gsd"
   export: override_required
 }
 
