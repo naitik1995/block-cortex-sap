@@ -8,7 +8,7 @@
   elements:
   - title: Inventory Categorization by Value
     name: Inventory Categorization by Value
-    model: cortex_sap_operational
+    model: cortex_sap_operational_o2c
     explore: inventory_by_plant
     type: looker_pie
     fields: [inventory_by_plant.stock_characteristic, inventory_by_plant.sum_inventory_value_target_currency]
