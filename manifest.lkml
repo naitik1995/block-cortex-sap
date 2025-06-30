@@ -1,20 +1,20 @@
 constant: CONNECTION_NAME {
-  value: "cortex-looker-gsd"
+  value: "sap-iac-test-cortex-bq-conn"
   export: override_required
 }
 
 constant: GCP_PROJECT {
-  value: "naitik-poc-test"
+  value: "sap-iac-test"
   export: override_required
 }
 
 constant: REPORTING_DATASET {
-  value: "REPORTING_SAP_V_5_3"
+  value: "GS4_REPORTING"
   export: override_required
 }
 
 constant: CLIENT {
-  value: "100"
+  value: "600"
   export: override_required
 }
 
@@ -36,8 +36,8 @@ constant: CLIENT {
 
 application: explore_assistant {
   label: "Explore Assistant PSO SAP NEW"
-  # url: "https://localhost:8080/bundle.js"
-  file: "bundle.js"
+  url: "https://localhost:8080/bundle.js"
+  #file: "bundle.js"
   entitlements: {
     core_api_methods: ["lookml_model_explore","create_sql_query","run_sql_query","run_query","create_query"]
     navigation: yes
