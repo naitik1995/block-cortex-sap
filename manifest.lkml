@@ -1,10 +1,10 @@
 constant: CONNECTION_NAME {
-  value: "sap-iac-test-cortex-bq-conn"
+  value: "bq_sap_looker_gsd"
   export: override_required
 }
 
 constant: GCP_PROJECT {
-  value: "sap-iac-test"
+  value: "gcc-sap-sandbox-demo"
   export: override_required
 }
 
