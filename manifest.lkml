@@ -1,5 +1,5 @@
 constant: CONNECTION_NAME {
-  value: "bq_sap_looker_gsd"
+  value: "gs4_cortex_reporting"
   export: override_required
 }
 
