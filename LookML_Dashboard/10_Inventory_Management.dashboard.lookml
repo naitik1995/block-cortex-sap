@@ -342,7 +342,7 @@
     filters:
       inventory_metrics_overview.month_end_month: 72 months ago for 72 months
     sorts: [inventory_metrics_overview.material_type, inventory_metrics_overview.month_end_month]
-    limit: 72
+    limit: 12
     column_limit: 50
     x_axis_gridlines: false
     y_axis_gridlines: true
