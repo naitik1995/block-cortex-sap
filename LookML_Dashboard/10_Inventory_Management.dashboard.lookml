@@ -13,7 +13,8 @@
     type: looker_pie
     fields: [inventory_by_plant.stock_characteristic, inventory_by_plant.sum_inventory_value_target_currency]
     filters:
-      inventory_by_plant.week_end_date: today
+      inventory_by_plant.week_end_date: 'today'
+      inventory_by_plant.stock_characteristic: '-NULL, -""' # Looker syntax for "is not null"
     sorts: [inventory_by_plant.sum_inventory_value_target_currency desc 0]
     limit: 500
     column_limit: 50
@@ -443,8 +444,7 @@
   - name: " (3)"
     type: text
     title_text: ''
-    subtitle_text: <font color="#5e5e5e">What is my total inventory value over the
-      past 12 months?</font>
+    subtitle_text: <font color="#5e5e5e">What is my total inventory value over 12 months ?</font>
     body_text: ''
     row: 15
     col: 0
@@ -472,8 +472,7 @@
   - name: " (6)"
     type: text
     title_text: ''
-    subtitle_text: <font color="#5e5e5e">What is my inventory value by material type
-      for the past 12 months?</font>
+    subtitle_text: <font color="#5e5e5e">What is my inventory value by material type?</font>
     body_text: ''
     row: 15
     col: 12
