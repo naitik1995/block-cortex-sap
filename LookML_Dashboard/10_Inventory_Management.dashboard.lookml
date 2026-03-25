@@ -340,9 +340,9 @@
     pivots: [inventory_metrics_overview.material_type]
     fill_fields: [inventory_metrics_overview.month_end_month]
     filters:
-      inventory_metrics_overview.month_end_month: 72 months ago for 12 months
+      inventory_metrics_overview.month_end_month: 72 months ago for 72 months
     sorts: [inventory_metrics_overview.material_type, inventory_metrics_overview.month_end_month]
-    limit: 12
+    limit: 72
     column_limit: 50
     x_axis_gridlines: false
     y_axis_gridlines: true
