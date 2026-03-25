@@ -14,7 +14,7 @@
     fields: [inventory_by_plant.stock_characteristic, inventory_by_plant.sum_inventory_value_target_currency]
     filters:
       inventory_by_plant.week_end_date: 'today'
-      inventory_by_plant.stock_characteristic: '-NULL, -""' # Looker syntax for "is not null"
+      inventory_by_plant.stock_characteristic: !!str -NULL,-EMPTY,-" "
     sorts: [inventory_by_plant.sum_inventory_value_target_currency desc 0]
     limit: 500
     column_limit: 50
